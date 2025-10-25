@@ -1,34 +1,139 @@
 <!DOCTYPE html>
-<html
-
-
-
->
-
+<html lang="en">
 <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Khalid — Cosmic C Dev</title>
+<style>
+  :root{
+    --bg:#06020c;
+    --purple:#a259ff;
+    --purple-neon:#c792ff;
+    --text:#e4d8ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Orbitron', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+  }
+  .space{
+    position:fixed; inset:0;
+    background:radial-gradient(circle at 50% 50%, #140a22 0%, #06020c 70%);
+    overflow:hidden;
+    z-index:-2;
+  }
+
+  /* Stars */
+  .star{
+    position:absolute;
+    width:2px;height:2px;
+    background:var(--purple-neon);
+    border-radius:50%;
+    filter:drop-shadow(0 0 8px var(--purple-neon));
+    animation: drift 8s linear infinite;
+  }
+  @keyframes drift{
+    from{transform:translateY(0)}
+    to{transform:translateY(300vh)}
+  }
+
+  .center{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:32px;
+  }
+
+  h1{
+    font-size:3.5rem;
+    line-height:1.1;
+    letter-spacing:4px;
+    text-shadow:0 0 14px var(--purple), 0 0 32px var(--purple-neon);
+  }
+  h2{
+    margin-top:18px;
+    font-size:1.1rem;
+    font-weight:500;
+    letter-spacing:2px;
+    color:var(--purple-neon);
+  }
+
+  .book-link{
+    margin-top:26px;
+    font-size:1rem;
+    text-decoration:none;
+    padding:12px 24px;
+    border:1px solid var(--purple);
+    border-radius:12px;
+    color:white;
+    background:rgba(162,89,255,0.05);
+    backdrop-filter:blur(6px);
+    transition:0.3s;
+  }
+  .book-link:hover{
+    background:var(--purple);
+    transform:translateY(-3px);
+    box-shadow:0 0 20px var(--purple-neon);
+  }
+
+  .github{
+    margin-top:30px;
+    display:inline-block;
+    font-size:0.9rem;
+    opacity:0.7;
+    text-decoration:none;
+    color:var(--text);
+
+    transition:0.3s;
+
+  }
+  .github:hover{
+    opacity:1;
+    text-shadow:0 0 10px var(--purple);
+  }
+
+  @media(max-width:600px){
+    h1{font-size:2.6rem;}
+  }
+</style>
 </head>
 <body>
-    
-        <h1 class="title">Hello World!</h1>
+<div class="space"></div>
+
+<section class="center">
+  <h1>KHALID</h1>
+
+
+  <h2>"I speak in bits and pointers"</h2>
 
 
 
+  <a class="book-link" href="https://www.google.com/search?q=C+How+to+Program+Deitel" target="_blank">Current Read: C How to Program</a>
 
 
+  <a class="github" href="https://github.com/onepurp" target="_blank">github.com/onepurp</a>
 
 
+</section>
 
-
-
-
+<script>
+  const stars=60;
+  const sky=document.querySelector('.space');
+  for(let i=0;i<stars;i++){
+    const s=document.createElement('div');
+    s.classList.add('star');
+    s.style.left=Math.random()*100+'%';
+    s.style.top=-Math.random()*100+'vh';
+    s.style.animationDelay=Math.random()*6+'s';
+    sky.appendChild(s);
+  }
+</script>
 </body>
-</html
+</html>
 
-
-
-
-
-
-
->
 
